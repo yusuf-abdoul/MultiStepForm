@@ -1,0 +1,665 @@
+:root {
+  --MarineBlue: hsl(213, 96%, 18%);
+  --PurplishBlue: hsl(243, 100%, 62%);
+  --PastelBlue: hsl(228, 100%, 84%);
+  --LightBlue: hsl(206, 94%, 87%);
+  --StrawberryRed: hsl(354, 84%, 57%);
+  --CoolGray: hsl(231, 11%, 63%);
+  --LightGray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+* *::before *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+
+html,
+button,
+input {
+  font: 400 1rem "Ubuntu", sans-serif;
+}
+
+body {
+  background-color: var(--Magnolia);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.contentBox {
+  background-color: var(--White);
+  display: flex;
+  gap: 6.25rem;
+  width: 100%;
+  max-width: 58.75rem;
+  height: 35.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 50px 6px rgba(0, 0, 0, 0.13);
+}
+
+.sidebar {
+  background-image: url(../../images/bg-sidebar-desktop.svg);
+  width: 100%;
+  max-width: 17.25rem;
+  padding: 2.375rem 2rem;
+  background-repeat: no-repeat;
+}
+.sidebar .progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.56rem;
+}
+.sidebar .progress_range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--LightBlue);
+  border-radius: 50%;
+  color: var(--LightBlue);
+}
+.sidebar .progress_info {
+  text-transform: uppercase;
+}
+.sidebar .progress_step {
+  font-size: 0.825rem;
+  color: var(--PastelBlue);
+}
+.sidebar .progress_name {
+  font-weight: 700;
+  margin-top: 0.25rem;
+  color: var(--White);
+}
+.sidebar .progress.active .progress_range {
+  background-color: var(--LightBlue);
+  color: var(--MarineBlue);
+}
+
+#multistepForm {
+  flex: 1;
+  display: flex;
+  padding: 2.5rem 5.25rem 1rem;
+}
+#multistepForm h1,
+#multistepForm .stepTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--MarineBlue);
+}
+#multistepForm .stepBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#multistepForm .step {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+#multistepForm_text {
+  margin: 0.75rem 0 2.5rem;
+  color: var(--CoolGray);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.fieldGroup .labelLine {
+  display: flex;
+  justify-content: space-between;
+}
+.fieldGroup .labelLine label {
+  font-size: 0.875rem;
+}
+.fieldGroup .labelLine .invalid {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--StrawberryRed);
+}
+.fieldGroup .labelLine .invalid.show {
+  display: inline;
+}
+.fieldGroup .inputLine {
+  margin: 0.5rem 0 0;
+}
+.fieldGroup .inputLine input {
+  background-color: var(--LightGray);
+  font-weight: 500;
+  width: 100%;
+  padding: 0.875rem 0.875rem;
+  border: 1px solid var(--PastelBlue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.fieldGroup .inputLine input::-moz-placeholder {
+  color: var(--CoolGray);
+}
+.fieldGroup .inputLine input::placeholder {
+  color: var(--CoolGray);
+}
+.fieldGroup .inputLine input:hover, .fieldGroup .inputLine input:focus {
+  border-color: var(--PastelBlue);
+}
+.fieldGroup .inputLine input.invalid {
+  border-color: var(--StrawberryRed);
+}
+
+#monthlyOption,
+#yearlyOption {
+  display: none;
+}
+
+.planSelection {
+  gap: 1.25rem;
+}
+.planSelection label {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+}
+.planSelection label .card_container {
+  display: block;
+  border: 1px solid var(--CoolGray);
+  padding: 1.25rem 0.875rem 1rem;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+.planSelection label .card_container:hover {
+  border-color: var(--MarineBlue);
+}
+.planSelection label input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.planSelection label input:checked + .card_container {
+  background-color: var(--Alabaster);
+  border-color: var(--MarineBlue);
+}
+.planSelection label .card_content {
+  display: flex;
+  flex-direction: column;
+}
+.planSelection label .card_content .image {
+  margin-bottom: 2.5rem;
+}
+.planSelection label .card_content .card_title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--MarineBlue);
+}
+.planSelection label .card_content .card_price {
+  font-size: 0.75rem;
+  margin-top: 0.3125rem;
+  color: var(--CoolGray);
+}
+.planSelection label .card_content .monthFree {
+  font-size: 0.3125rem;
+  margin: 0.5rem 0 0.25rem;
+  color: var(--MarineBlue);
+}
+
+.checkDuration {
+  background-color: var(--Alabaster);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4375rem;
+  margin-top: 2rem;
+  padding: 0.875rem 0.75rem 0.875rem 0;
+  border-radius: 0.5rem;
+}
+
+.duration {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--CoolGray);
+}
+
+.durationSlider {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.25rem;
+}
+.durationSlider input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.durationSlider .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--MarineBlue);
+  border-radius: 0.625rem;
+  transition: 0.3s ease;
+}
+.durationSlider .slider::before {
+  position: absolute;
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  left: 0.25rem;
+  bottom: 0.25rem;
+  background-color: var(--White);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+.durationSlider input:checked + .slider:before {
+  transform: translateX(1.25rem);
+}
+
+.addOns {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.addOns .addonBox_wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--CoolGray);
+  border-radius: 0.5rem;
+  transition: border 0.3s ease;
+  cursor: pointer;
+}
+.addOns .addonBox_wrapper::hover {
+  border-color: var(--PurplishBlue);
+}
+.addOns .addonBox_text {
+  flex: 1;
+}
+.addOns .addonBox_service {
+  font-weight: 500;
+  color: var(--MarineBlue);
+}
+.addOns .addonBox_p {
+  font-size: 0.875rem;
+  margin-top: 0.375rem;
+  color: var(--CoolGray);
+}
+.addOns .addonBox_price {
+  font-size: 0.875rrem;
+  color: var(--PurplishBlue);
+}
+.addOns input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.addOns .checkmark {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--CoolGray);
+  border-radius: 0.25rem;
+  transition: border 0.3s ease;
+}
+.addOns:hover input ~ .checkmark {
+  border: 1px solid var(--LightGray);
+}
+.addOns input:checked ~ .addonBox_wrapper .checkmark {
+  background-color: var(--PurplishBlue);
+  border: var(--PurplishBlue);
+}
+.addOns input:checked ~ .addonBox_wrapper {
+  border-color: var(--PurplishBlue);
+}
+.addOns .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.addOns input:checked ~ .addonBox_wrapper .checkmark::after {
+  display: block;
+}
+.addOns .checkmark::after {
+  left: 0.375rem;
+  top: 0.125rem;
+  width: 0.5rem;
+  height: 0.6875rem;
+  border: solid var(--White);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.summary {
+  background-color: var(--Magnolia);
+  padding: 1.375rem 1.5rem 1.5rem;
+  border-radius: 0.635rem;
+}
+.summary .selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+.summary .selection_name {
+  font-weight: 700;
+  color: var(--MarineBlue);
+}
+.summary .selection_change {
+  font-size: 0.875rem;
+  margin-top: 0.3125rem;
+  text-decoration: underline;
+  color: var(--CoolGray);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.summary .selection_change:hover {
+  color: var(--PurplishBlue);
+}
+.summary .selection_price {
+  font-weight: 700;
+}
+.summary .optionBox {
+  border-top: 1px solid var(--CoolGray);
+}
+.summary .optionBox .option {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+.summary .optionBox .option_name, .summary .optionBox .option_price {
+  font-size: 0.875rem;
+}
+.summary .optionBox .option_name {
+  color: var(--CoolGray);
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+.totalPrice_name {
+  font-size: 0.875rem;
+  color: var(--CoolGray);
+}
+.totalPrice_price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--PurplishBlue);
+}
+
+.buttonGroup {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#next {
+  background-color: var(--MarineBlue);
+  font-size: 1rem;
+  width: 7.75rem;
+  padding: 0.9375rem 0;
+  border: 0;
+  border-radius: 0.375rem;
+  color: var(--White);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#next:hover {
+  opacity: 0.8s;
+}
+
+#prev {
+  background-color: transparent;
+  font-weight: 500;
+  border: 0;
+  color: var(--CoolGray);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#prev:hover {
+  color: var(--MarineBlue);
+}
+
+#confirm {
+  background-color: var(--PurplishBlue);
+  font-size: 1rem;
+  width: 7.75rem;
+  padding: 0.9375rem 0;
+  border: 0;
+  border-radius: 0.375rem;
+  color: var(--White);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#confirm:hover {
+  background-color: var(--PastelBlue);
+}
+
+.confirmation {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5.25rem;
+}
+.confirmation_content {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1.25rem;
+}
+.confirmation_image {
+  margin-bottom: 0.5rem;
+}
+.confirmation_image img {
+  width: 100%;
+}
+.confirmation_title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--MarineBlue);
+}
+.confirmation_text {
+  color: var(--CoolGray);
+  text-align: center;
+  line-height: 160%;
+}
+
+@media (max-width: 60.625rem) {
+  .contentBox {
+    gap: 50px;
+  }
+  #multistepForm {
+    padding-right: 3.125rem;
+  }
+  .confirmation {
+    margin-right: 3.125rem;
+  }
+}
+@media (max-width: 50rem) {
+  .contentBox {
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .sidebar {
+    background: url("../../images/bg-sidebar-mobile.svg") top left no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 100%;
+    height: 10.75rem;
+    padding: 2rem;
+  }
+  .sidebar .progress {
+    align-items: flex-start;
+  }
+  .sidebar .progress_info {
+    display: none;
+  }
+  #multistepForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+  #multistepForm .stepBox {
+    align-items: center;
+  }
+  #multistepForm .step {
+    background-color: var(--White);
+    max-width: 21.4375rem;
+    margin: 4.625rem 1rem 0;
+    padding: 2rem 1.5rem 2rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
+  }
+  #multistepForm .step h1,
+  #multistepForm .step .stepTitle {
+    font-size: 1.5rem;
+  }
+  #multistepForm .step .step_text {
+    margin: 0.5rem 0 1.5rem;
+    line-height: 150%;
+  }
+  .fieldGroup {
+    gap: 0.9375rem;
+  }
+  .fieldGroup .labelLine label {
+    font-size: 0.75rem;
+  }
+  .fieldGroup .labelLine .invalid {
+    font-size: 0.875rem;
+  }
+  .fieldGroup .inputLine {
+    margin: 0.25rem 0 0;
+  }
+  .fieldGroup .inputLine input {
+    font-size: 0.9375rem;
+    padding: 0.6875rem 1rem;
+  }
+  #monthlyOption,
+  #yearlyOption {
+    flex-direction: column;
+  }
+  .planSelection {
+    gap: 0.75rem;
+  }
+  .planSelection label .card_container {
+    padding: 1rem 0.875rem;
+  }
+  .planSelection label .card_content {
+    flex-direction: row;
+    gap: 0.875rem;
+  }
+  .planSelection label .card_content .image {
+    margin-bottom: 0;
+  }
+  .planSelection label .card_content .card_price {
+    margin-top: 0.375rem;
+  }
+  .checkDuration {
+    margin-top: 1.5rem;
+  }
+  .addOns {
+    gap: 0.75rem;
+  }
+  .addOns .addonBox_wrapper {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+  .addOns .addonBox_service {
+    font-size: 0.875rem;
+  }
+  .addOns .addonBox_price {
+    font-size: 0.75rem;
+  }
+  .summary {
+    padding: 1.25rem 0.9375rem;
+  }
+  .summary .selection {
+    padding-bottom: 0.75rem;
+  }
+  .summary .selection_name {
+    font-size: 0.875rem;
+  }
+  .summary .selection_change {
+    margin-top: 0.125rem;
+  }
+  .optionBox option {
+    margin-top: 1rem;
+  }
+  .totalPrice {
+    padding: 1.25rem 1rem 0.125rem;
+  }
+  .totalPrice_price {
+    font-size: 1rem;
+  }
+  .buttonGroup {
+    background-color: var(--White);
+    padding: 1rem;
+    width: 100%;
+  }
+  #next,
+  #confirm {
+    font-size: 0.875rem;
+    width: 6.625rem;
+    padding: 0.75rem 0;
+    border-radius: 0.125rem;
+  }
+  #prev {
+    font-size: 0.875rem;
+  }
+  .confirmation {
+    background-color: var(--White);
+    max-width: 21.4375rem;
+    height: 20.5rem;
+    margin: 4.625rem 1rem 0;
+    padding: 2rem 1.5rem 2rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
+  }
+  .confirmation_content {
+    max-width: 3.5rem;
+  }
+  .confirmation_title {
+    font-size: 1.5rem;
+  }
+}/*# sourceMappingURL=style.css.map */

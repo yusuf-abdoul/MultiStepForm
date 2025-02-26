@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- META -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <!--FAVICON -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <!-- Title -->
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <!-- Google Fonts  / Ubuntu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+
+  <link rel="stylesheet" href="./assets/styles/scss/style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+    <div class="contentBox">
+      <!-- SideBar -->
+      <div class="sidebar">
+        <div class="progress active">
+          <div class="progress_range">1</div>
+          <div class="progress_info">
+            <div class="progress_step">Step 1</div>
+            <div class="progress_name">Your info</div>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress_range">2</div>
+          <div class="progress_info">
+            <div class="progress_step">Step 2</div>
+            <div class="progress_name">Select plan</div>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress_range">3</div>
+          <div class="progress_info">
+            <div class="progress_step">Step 3</div>
+            <div class="progress_name">Add-ons</div>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="progress_range">4</div>
+          <div class="progress_info">
+            <div class="progress_step">Step 4</div>
+            <div class="progress_name">Summary</div>
+          </div>
+        </div>
+      </div>
+      <!-- FORM -->
+      <form action="index.html" method="post" id="multistepForm">
+        <div class="stepBox">
+          <!-- STEP 1 -->
+          <div class="step" id="step-1">
+            <h1>Personal info</h1>
+            <p class="step_text">Please provide your name, email address, and phone number.</p>
+            <div class="fieldGroup">
+              <div class="inputBox">
+                <div class="labelLine">
+                  <label for="name">Name</label>
+                  <span class="invalid">This field is required</span>
+                </div>
+                <div class="inputLine">
+                  <input type="text" name="name" id="name" placeholder="e.g. Stephen King">
+                </div>
+              </div>
+              <div class="inputBox">
+                <div class="labelLine">
+                  <label for="email">Email Address</label>
+                  <span class="invalid">This field is required</span>
+                </div>
+                <div class="inputLine">
+                  <input type="email" name="email" id="email" placeholder="e.g. stephenking@lorem.com">
+                </div>
+              </div>
+              <div class="inputBox">
+                <div class="labelLine">
+                  <label for="phoneNumber">Phone Number</label>
+                  <span class="invalid">This field is required</span>
+                </div>
+                <div class="inputLine">
+                  <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="e.g. +1 234 567 890">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- STEP 2 -->
+          <div class="step" id="step-2">
+            <div class="stepTitle">Select your plan</div>
+            <p class="step_text">You have the option of monthly or yearly billing.</p>
+            <div class="optionDuration">
+              <div class="planSelection" id="monthlyOption">
+                <label for="radioCard-1" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-1" class="radioCard" value="1">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-arcade.svg" alt="Icon Arcade">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Arcade</div>
+                        <div class="card_price">&dollar;9/mo</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+                <label for="radioCard-2" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-2" class="radioCard" value="2">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-advanced.svg" alt="Icon Advanced">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Advanced</div>
+                        <div class="card_price">&dollar;12/mo</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+                <label for="radioCard-3" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-3" class="radioCard" value="3">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-pro.svg" alt="Icon Pro">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Pro</div>
+                        <div class="card_price">&dollar;15/mo</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="planSelection" id="yearlyOption">
+                <label for="radioCard-4" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-4" class="radioCard" value="4">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-arcade.svg" alt="Icon Arcade">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Arcade</div>
+                        <div class="card_price">&dollar;90/yr</div>
+                        <div class="monthFree">2 months free</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+                <label for="radioCard-5" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-5" class="radioCard" value="5">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-advanced.svg" alt="Icon Advanced">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Advanced</div>
+                        <div class="card_price">&dollar;$120/yr</div>
+                        <div class="monthFree">2 months free</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+                <label for="radioCard-6" class="card">
+                  <input type="radio" name="radioCard" id="radioCard-6" class="radioCard" value="6">
+                  <div class="card_container">
+                    <div class="card_content">
+                      <div class="image">
+                        <img src="./assets/images/icon-pro.svg" alt="Icon Pro">
+                      </div>
+                      <div class="card_details">
+                        <div class="card_title">Pro</div>
+                        <div class="card_price">&dollar;$150/yr</div>
+                        <div class="monthFree">2 months free</div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="checkDuration">
+                <div class="duration" id="monthDuration">Monthly</div>
+                <label class="durationSlider" id="durationSlider">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+                <div class="duration" id="yearDuration">Yearly</div>
+              </div>
+            </div>
+          </div>
+          <!-- STEP 3 -->
+          <div class="step" id="step-3">
+            <div class="stepTitle">Pick add-ons</div>
+            <p class="step_text">Add-ons help enhance your gaming experience.</p>
+            <div class="addOns">
+              <label for="checkbox-1" class="addonBox">
+                <input type="checkbox" name="checkbox-1" id="checkbox-1">
+                <div class="addonBox_wrapper">
+                  <span class="checkmark"></span>
+                  <div class="addonBox_text">
+                    <div class="addonBox_service">Online service</div>
+                    <div class="addonBox_p">Access to multiplayer games</div>
+                  </div>
+                  <div class="addonBox_price" id="onlineService">+$1/mo</div>
+                </div>
+              </label>
+              <label for="checkbox-2" class="addonBox">
+                <input type="checkbox" name="checkbox-2" id="checkbox-2">
+                <div class="addonBox_wrapper">
+                  <span class="checkmark"></span>
+                  <div class="addonBox_text">
+                    <div class="addonBox_service">Larger storage</div>
+                    <div class="addonBox_p"> Extra 1TB of cloud save</div>
+                  </div>
+                  <div class="addonBox_price" id="storage">+$2/mo</div>
+                </div>
+              </label>
+              <label for="checkbox-3" class="addonBox">
+                <input type="checkbox" name="checkbox-3" id="checkbox-3">
+                <div class="addonBox_wrapper">
+                  <span class="checkmark"></span>
+                  <div class="addonBox_text">
+                    <div class="addonBox_service">Customizable Profile</div>
+                    <div class="addonBox_p"> Custom theme on your profile </div>
+                  </div>
+                  <div class="addonBox_price" id="profile">+$2/mo</div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="step" id="step-4">
+            <div class="stepTitle">Finishing up</div>
+            <p class="step_text">Double-check everything looks OK before confirming.</p>
+            <div class="sumary">
+              <div class="selection">
+                <div class="selection_desc">
+                  <div class="selection_name" id="selection_name"></div>
+                  <div class="selection_change" onclick="prevNext(-2)">Change</div>
+                </div>
+                <div class="selection_price" id="selection_price"></div>
+              </div>
+              <div class="optionBox">
+                <div class="option" id="option-0">
+                  <div class="option_name">Online Service</div>
+                  <div class="option_price"></div>
+                </div>
+                <div class="option" id="option-1">
+                  <div class="option_name">Larger storage</div>
+                  <div class="option_price"></div>
+                </div>
+                <div class="option" id="option-2">
+                  <div class="option_name">Customisable profile</div>
+                  <div class="option_price"></div>
+                </div>
+              </div>
+            </div>
+            <div class="totalPrice">
+              <div class="totalPrice_name">Total (per month/year)</div>
+              <div class="totalPrice"></div>
+            </div>
+          </div>
+          <!-- PREV/NEXT BUTTONS -->
+          <div class="buttonGroup">
+            <button type="button" id="prev" onclick="prevNext(-1)">Go Back</button>
+            <button type="button" id="next" onclick="prevNext(1)">Next Step</button>
+            <button type="submit" id="confirm">Confirm</button>
+          </div>
+        </div>
+      </form>
+      <!-- CONFIRMATON -->
+      <div class="confirmation" id="confirmation">
+        <div class="confirmation_content">
+          <div class="confirmation_image">
+            <img src="./assets/images/icon-thank-you.svg" alt="Thank You">
+          </div>
+          <div class="confirmation_title">Thank you!</div>
+          <div class="confirmation_text">
+            Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free
+            to email us at support@loremgaming.com.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+
+  <!-- Scripts -->
+
+  <script src="./assets/scripts/script.js"></script>
+
+<!--
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+   -->
+
+</body>
+
+</html>
