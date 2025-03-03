@@ -25,6 +25,9 @@ function showStep(stepNb) {
         document.getElementById("next").style.display = "none";
         document.getElementById("confirm").style.display = "block";
     }
+    else {
+        document.getElementById("next").style.display = "block";
+    }
 }
 
 function validation() {
@@ -55,7 +58,7 @@ function prevNext(stepNb) {
 let inputs = document.querySelectorAll("#step-1 input");
 
 inputs.forEach((input, i) => {
-    input.addEventListener("input", () => {
+    input.addEventListener("blur", () => {
         if (input.value !== "") {
             inputBox[i].querySelector(".invalid").classList.remove('show');
             input.classList.remove("invalid");
@@ -71,7 +74,7 @@ inputs.forEach((input, i) => {
 // ** STEP 2 ** 
 
 let durationSlider = document.querySelector("#durationSlider input");
-let checkPlans = document.getElementById("radioCard");
+let checkPlans = document.getElementsByName("radioCard");
 let isMonthly = true;
 let checkedPlanNb = 0;
 priceDetails[0] = checkPrice(checkedPlanNb, null);
@@ -81,46 +84,47 @@ checkPlans[0].checked = true;
 
 monthSelection();
 selectionName(checkedPlanNb);
-selectionOption(checkedPlanNb);
+selectionOptions(checkedPlanNb);
 priceShow();
 
 durationSlider.addEventListener("change", (event) => {
-    if (event.target.checkeed) {
+    if (event.target.checked) {
         isMonthly = false;
         yearlyChange();
         yearSelection();
         selectionName(checkedPlanNb);
-        selectionOption(checkedPlanNb);
+        selectionOptions(checkedPlanNb);
         checkOptions(checkedPlanNb);
         priceShow();
     }
     else {
         isMonthly = true;
+        monthlyChange();
         monthSelection();
         selectionName(checkedPlanNb);
-        selectionOption(checkedPlanNb);
+        selectionOptions(checkedPlanNb);
         checkOptions(checkedPlanNb);
         priceShow();
     }
 });
 
-checkPlans.forEach((checkPlan, i) => {
+checkPlans.forEach((selection, i) => {
     selection.addEventListener("click", () => {
         checkedPlanNb = i;
         selectionName(checkedPlanNb);
-        selectionOption(checkedPlanNb);
+        selectionOptions(checkedPlanNb);
         priceDetails[0] = checkPrice(checkedPlanNb, null);
         priceShow();
-    })
+    });
 });
 
 
 function yearlyChange() {
     document.querySelector("#monthlyOption").style.display = "none";
-    document.querySelector("#monthDuration").style.color = "var(--coolGray)";
+    document.querySelector("#monthDuration").style.color = "var(--CoolGray)";
     document.querySelector("#yearlyOption").style.display = "flex";
-    document.querySelector("#yearDuration").style.color = "var(--marineBlue)";
-    checkPlans[3].cheked = true;
+    document.querySelector("#yearDuration").style.color = "var(--MarineBlue)";
+    checkPlans[3].checked = true;
     checkedPlanNb = 3;
     priceDetails[0] = checkPrice(checkedPlanNb, null);
     priceShow();
@@ -128,10 +132,10 @@ function yearlyChange() {
 
 function monthlyChange() {
     document.querySelector("#yearlyOption").style.display = "none";
-    document.querySelector("#yearDuration").style.color = "var(--coolGray)";
-    document.querySelector("#monthlylyOption").style.display = "flex";
-    document.querySelector("#monthDuration").style.color = "var(--marineBlue)";
-    checkPlans[0].cheked = true;
+    document.querySelector("#yearDuration").style.color = "var(--CoolGray)";
+    document.querySelector("#monthlyOption").style.display = "flex";
+    document.querySelector("#monthDuration").style.color = "var(--MarineBlue)";
+    checkPlans[0].checked = true;
     checkedPlanNb = 0;
     priceDetails[0] = checkPrice(checkedPlanNb, null);
     priceShow();
@@ -144,14 +148,14 @@ let options = document.querySelectorAll(".addonBox input");
 document.querySelector(".optionBox").style.display = "none";
 
 function monthSelection() {
-    document.querySelector("onlineService").innerHTML = "+&dollar;1/mo";
-    document.querySelector("storage").innerHTML = "+&dollar;2/mo";
+    document.querySelector("#onlineService").innerHTML = "+&dollar;1/mo";
+    document.querySelector("#storage").innerHTML = "+&dollar;2/mo";
     document.querySelector("#profile").innerHTML = "+&dollar;2/mo";
 }
 
 function yearSelection() {
-    document.querySelector("onlineService").innerHTML = "+&dollar;10/yr";
-    document.querySelector("storage").innerHTML = "+&dollar;20/yr";
+    document.querySelector("#onlineService").innerHTML = "+&dollar;10/yr";
+    document.querySelector("#storage").innerHTML = "+&dollar;20/yr";
     document.querySelector("#profile").innerHTML = "+&dollar;20/yr";
 }
 
@@ -215,7 +219,7 @@ function checkOptions(option) {
     });
 }
 
-function selectionOption(option) {
+function selectionOptions(option) {
     switch (option) {
         case 0:
         case 1:
@@ -254,7 +258,7 @@ function checkPrice(plan, option) {
     if (option === 0 && plan < 3) {
         return 1;
     }
-    if (option === 1 && plan >= 3) {
+    if (option === 0 && plan >= 3) {
         return 10;
     }
     if ((option === 1 || option === 2) && plan < 3) {
@@ -266,15 +270,15 @@ function checkPrice(plan, option) {
 }
 
 function priceShow() {
-    let X = 0;
-    priceDetails.forEach((price) => {
-        X += price;
+    let x = 0;
+    priceDetails.forEach(price => {
+        x += price;
     });
     if (isMonthly) {
-        document.querySelector(".total_price").innerHTML = "&dollar;$(x)/mo";
+        document.querySelector(".totalPrice_price").innerHTML = `&dollar;${x}/mo`;
     }
     else {
-        document.querySelector(".total_price").innerHTML = "&dollar;$(x)/yr";
+        document.querySelector(".totalPrice_price").innerHTML = `&dollar;${x}/yr`
     }
 }
 
@@ -284,4 +288,4 @@ document.getElementById("multistepForm").addEventListener("submit", (event) => {
     event.preventDefault();
     document.querySelector("#multistepForm").style.display = "none";
     document.querySelector("#confirmation").style.display = "flex";
-});
+})

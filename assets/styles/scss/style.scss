@@ -11,8 +11,9 @@
     --White: hsl(0, 0%, 100%);
 
 }
-
-* *::before *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -39,6 +40,8 @@ body {
 
 .contentBox {
     background-color: var(--White);
+    border-radius: 1rem;
+    box-shadow: 0 10px 50px 6px rgba(0, 0, 0, 0.13);
     display: flex;
     gap: 6.25rem;
     width: 100%;
@@ -46,11 +49,7 @@ body {
     height: 35.5rem;
     margin: 1rem;
     padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 50px 6px rgba(0, 0, 0, 0.13);
 }
-
-// **SIDEBAR **
 
 .sidebar {
     background-image: url(../../images/bg-sidebar-desktop.svg);
@@ -58,140 +57,131 @@ body {
     max-width: 17.25rem;
     padding: 2.375rem 2rem;
     background-repeat: no-repeat;
+}
 
-    .progress {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.56rem;
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.56rem;
+}
 
+.progress_range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--LightBlue);
+    border-radius: 50%;
+    color: var(--LightBlue);
+}
 
-        &_range {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 500;
-            width: 2rem;
-            height: 2rem;
-            border: 1px solid var(--LightBlue);
-            border-radius: 50%;
-            color: var(--LightBlue);
-        }
+.progress_info {
+    text-transform: uppercase;
+}
 
-        &_info {
-            text-transform: uppercase;
-        }
+.progress_step {
+    font-size: 0.825rem;
+    color: var(--PastelBlue);
+}
 
-        &_step {
-            font-size: 0.825rem;
-            color: var(--PastelBlue);
-        }
+.progress_name {
+    font-weight: 700;
+    margin-top: 0.25rem;
+    color: var(--White);
+}
 
-        &_name {
-            font-weight: 700;
-            margin-top: 0.25rem;
-            color: var(--White);
-        }
-
-        &.active {
-            .progress_range {
-                background-color: var(--LightBlue);
-                color: var(--MarineBlue);
-            }
-        }
-    }
+.progress.active .progress_range {
+    background-color: var(--LightBlue);
+    color: var(--MarineBlue);
 }
 
 #multistepForm {
     flex: 1;
     display: flex;
-    padding: 2.5rem 5.25rem 1rem;
-
-
-    h1,
-    .stepTitle {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--MarineBlue);
-    }
-
-    .stepBox {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .step {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    &_text {
-        margin: 0.75rem 0 2.5rem;
-        color: var(--CoolGray);
-    }
+    padding: 2.5rem 5.25rem 1rem 0;
 }
 
-// *** STEP 1 **
+h1,
+.stepTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--MarineBlue);
+}
+
+.stepBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.step_text {
+    margin: 0.75rem 0 2.5rem;
+    color: var(--CoolGray);
+}
 
 .fieldGroup {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-
-
-    .labelLine {
-        display: flex;
-        justify-content: space-between;
-
-        label {
-            font-size: 0.875rem;
-        }
-
-        .invalid {
-            display: none;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--StrawberryRed);
-
-            &.show {
-                display: inline;
-            }
-        }
-    }
-
-    .inputLine {
-        margin: 0.5rem 0 0;
-
-        input {
-            background-color: var(--LightGray);
-            font-weight: 500;
-            width: 100%;
-            padding: 0.875rem 0.875rem;
-            border: 1px solid var(--PastelBlue);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: 0.3s ease;
-
-            &::placeholder {
-                color: var(--CoolGray);
-            }
-
-            &:hover,
-            &:focus {
-                border-color: var(--PastelBlue);
-            }
-
-            &.invalid {
-                border-color: var(--StrawberryRed);
-            }
-        }
-    }
 }
 
-// ** STEP 2 **
+.labelLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.labelLine label,
+.labelLine .invalid {
+    font-size: 0.875rem;
+}
+
+.labelLine .invalid {
+    display: none;
+    font-weight: 700;
+    color: var(--StrawberryRed);
+}
+
+.labelLine .invalid.show {
+    display: inline;
+}
+
+.inputLine {
+    margin: 0.5rem 0 0;
+}
+
+.inputLine input {
+    background-color: var(--White);
+    font-weight: 500;
+    width: 100%;
+    padding: 0.875rem;
+    border: 1px solid var(--LightGray);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.inputLine input::placeholder {
+    color: var(--CoolGray);
+}
+
+.inputLine input:hover,
+.inputLine input:focus {
+    border-color: var(--PastelBlue);
+}
+
+.inputLine input.invalid {
+    border-color: var(--StrawberryRed);
+}
 
 #monthlyOption,
 #yearlyOption {
@@ -200,66 +190,63 @@ body {
 
 .planSelection {
     gap: 1.25rem;
-
-    label {
-        flex: 1;
-        position: relative;
-        cursor: pointer;
-
-        .card_container {
-            display: block;
-            border: 1px solid var(--CoolGray);
-            padding: 1.25rem 0.875rem 1rem;
-            border-radius: 0.5rem;
-            transition: 0.3s ease;
-
-            &:hover {
-                border-color: var(--MarineBlue);
-            }
-        }
-
-        input {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-
-            &:checked+.card_container {
-                background-color: var(--Alabaster);
-                border-color: var(--MarineBlue);
-            }
-        }
-
-        .card_content {
-            display: flex;
-            flex-direction: column;
-
-            .image {
-                margin-bottom: 2.5rem;
-            }
-
-            .card_title {
-                font-size: 1rem;
-                font-weight: 700;
-                color: var(--MarineBlue);
-            }
-
-            .card_price {
-                font-size: 0.75rem;
-                margin-top: 0.3125rem;
-                color: var(--CoolGray);
-            }
-
-            .monthFree {
-                font-size: 0.3125rem;
-                margin: 0.5rem 0 0.25rem;
-                color: var(--MarineBlue);
-            }
-        }
-    }
 }
 
-// ** SLIDER **
+.planSelection label {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.card_container {
+    display: block;
+    border: 1px solid var(--CoolGray);
+    padding: 1.25rem 0.875rem 1rem;
+    border-radius: 0.5rem;
+    transition: 0.3s ease;
+}
+
+.card_container:hover {
+    border-color: var(--MarineBlue);
+}
+
+.planSelection input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.planSelection input:checked + .card_container {
+    background-color: var(--Alabaster);
+    border-color: var(--MarineBlue);
+}
+
+.card_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.card_content .image {
+    margin-bottom: 2.5rem;
+}
+
+.card_title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--MarineBlue);
+}
+
+.card_price,
+.monthFree {
+    font-size: 0.75rem;
+    color: var(--CoolGray);
+}
+
+.monthFree {
+    margin: 0.5rem 0 0.25rem;
+    color: var(--MarineBlue);
+}
 
 .checkDuration {
     background-color: var(--Alabaster);
@@ -283,195 +270,187 @@ body {
     display: inline-block;
     width: 2.5rem;
     height: 1.25rem;
-
-    input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--MarineBlue);
-        border-radius: 0.625rem;
-        transition: 0.3s ease;
-
-
-        &::before {
-            position: absolute;
-            content: '';
-            width: 0.75rem;
-            height: 0.75rem;
-            left: 0.25rem;
-            bottom: 0.25rem;
-            background-color: var(--White);
-            border-radius: 50%;
-            transition: 0.3s ease;
-        }
-    }
-
-    input:checked+.slider:before {
-        transform: translateX(1.25rem);
-    }
 }
 
-// ** STEP 3 **
+.durationSlider input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--MarineBlue);
+    border-radius: 0.625rem;
+    transition: 0.3s ease;
+}
+
+.slider::before {
+    position: absolute;
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    background-color: var(--White);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.durationSlider input:checked + .slider::before {
+    transform: translateX(1.25rem);
+}
 
 .addOns {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
-    .addonBox {
-
-        &_wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 0.5rem;
-            border: 1px solid var(--CoolGray);
-            border-radius: 0.5rem;
-            transition: border 0.3s ease;
-            cursor: pointer;
-
-            &::hover {
-                border-color: var(--PurplishBlue);
-            }
-        }
-
-        &_text {
-            flex: 1;
-        }
-
-        &_service {
-            font-weight: 500;
-            color: var(--MarineBlue);
-        }
-
-        &_p {
-            font-size: 0.875rem;
-            margin-top: 0.375rem;
-            color: var(--CoolGray);
-        }
-
-        &_price {
-            font-size: 0.875rrem;
-            color: var(--PurplishBlue);
-        }
-    }
-
-    input {
-        position: absolute;
-        width: 0;
-        height: 0;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-    .checkmark {
-        position: relative;
-        width: 1.25rem;
-        height: 1.25rem;
-        border: 1px solid var(--CoolGray);
-        border-radius: 0.25rem;
-        transition: border 0.3s ease;
-    }
-
-    &:hover input~.checkmark {
-        border: 1px solid var(--LightGray);
-    }
-
-    input:checked~.addonBox_wrapper .checkmark {
-        background-color: var(--PurplishBlue);
-        border: var(--PurplishBlue);
-    }
-
-    input:checked~.addonBox_wrapper {
-        border-color: var(--PurplishBlue);
-    }
-
-    .checkmark::after {
-        content: '';
-        position: absolute;
-        display: none;
-    }
-
-    input:checked~.addonBox_wrapper .checkmark::after {
-        display: block;
-    }
-
-    .checkmark::after {
-        left: 0.375rem;
-        top: 0.125rem;
-        width: 0.5rem;
-        height: 0.6875rem;
-        border: solid var(--White);
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
-    }
 }
 
-// ** STEP 4 ** 
+.addonBox_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--CoolGray);
+    border-radius: 0.5rem;
+    transition: border 0.3s ease;
+    cursor: pointer;
+}
+
+.addonBox_wrapper:hover {
+    border-color: var(--PurplishBlue);
+}
+
+.addonBox_text {
+    flex: 1;
+}
+
+.addonBox_service {
+    font-weight: 500;
+    color: var(--MarineBlue);
+}
+
+.addonBox_p {
+    font-size: 0.875rem;
+    margin-top: 0.375rem;
+    color: var(--CoolGray);
+}
+
+.addonBox_price {
+    font-size: 0.875rem;
+    color: var(--PurplishBlue);
+}
+
+.addOns input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid var(--CoolGray);
+    border-radius: 0.25rem;
+    transition: border 0.3s ease;
+}
+
+.addOns:hover input ~ .checkmark {
+    border: 1px solid var(--LightGray);
+}
+
+.addOns input:checked ~ .addonBox_wrapper .checkmark {
+    background-color: var(--PurplishBlue);
+    border: var(--PurplishBlue);
+}
+
+.addOns input:checked ~ .addonBox_wrapper {
+    border-color: var(--PurplishBlue);
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.addOns input:checked ~ .addonBox_wrapper .checkmark::after {
+    display: block;
+}
+
+.checkmark::after {
+    left: 0.375rem;
+    top: 0.125rem;
+    width: 0.5rem;
+    height: 0.6875rem;
+    border: solid var(--White);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
 
 .summary {
     background-color: var(--Magnolia);
     padding: 1.375rem 1.5rem 1.5rem;
     border-radius: 0.635rem;
+}
 
-    .selection {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 1.5rem;
+.selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+}
 
-        &_name {
-            font-weight: 700;
-            color: var(--MarineBlue);
-        }
+.selection_name {
+    font-weight: 700;
+    color: var(--MarineBlue);
+}
 
-        &_change {
-            font-size: 0.875rem;
-            margin-top: 0.3125rem;
-            text-decoration: underline;
-            color: var(--CoolGray);
-            cursor: pointer;
-            transition: color 0.3s ease;
+.selection_change {
+    font-size: 0.875rem;
+    margin-top: 0.3125rem;
+    text-decoration: underline;
+    color: var(--CoolGray);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
 
-            &:hover {
-                color: var(--PurplishBlue);
-            }
-        }
+.selection_change:hover {
+    color: var(--PurplishBlue);
+}
 
-        &_price {
-            font-weight: 700;
-        }
-    }
+.selection_price {
+    font-weight: 700;
+}
 
-    .optionBox {
-        border-top: 1px solid var(--CoolGray);
+.optionBox {
+    border-top: 1px solid var(--CoolGray);
+}
 
-        .option {
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.25rem;
+.option {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+}
 
-            &_name,
-            &_price {
-                font-size: 0.875rem;
-            }
+.option_name,
+.option_price {
+    font-size: 0.875rem;
+}
 
-            &_name {
-                color: var(--CoolGray);
-            }
-        }
-    }
+.option_name {
+    color: var(--CoolGray);
 }
 
 .totalPrice {
@@ -479,20 +458,18 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-
-    &_name {
-        font-size: 0.875rem;
-        color: var(--CoolGray);
-    }
-
-    &_price {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--PurplishBlue);
-    }
 }
 
-// **  BUTTONS ** 
+.totalPrice_name {
+    font-size: 0.875rem;
+    color: var(--CoolGray);
+}
+
+.totalPrice_price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--PurplishBlue);
+}
 
 .buttonGroup {
     align-self: stretch;
@@ -501,8 +478,8 @@ body {
     align-items: center;
 }
 
-#next {
-    background-color: var(--MarineBlue);
+#next,
+#confirm {
     font-size: 1rem;
     width: 7.75rem;
     padding: 0.9375rem 0;
@@ -512,10 +489,14 @@ body {
     text-align: center;
     cursor: pointer;
     transition: 0.3s ease;
+}
 
-    &:hover {
-        opacity: 0.8s;
-    }
+#next {
+    background-color: var(--MarineBlue);
+}
+
+#next:hover {
+    opacity: 0.8;
 }
 
 #prev {
@@ -525,69 +506,55 @@ body {
     color: var(--CoolGray);
     cursor: pointer;
     transition: 0.3s ease;
+}
 
-    &:hover {
-        color: var(--MarineBlue)
-    }
+#prev:hover {
+    color: var(--MarineBlue);
 }
 
 #confirm {
     background-color: var(--PurplishBlue);
-    font-size: 1rem;
-    width: 7.75rem;
-    padding: 0.9375rem 0;
-    border: 0;
-    border-radius: 0.375rem;
-    color: var(--White);
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s ease;
-
-    &:hover {
-        background-color: var(--PastelBlue);
-    }
 }
 
-
-// ** CONFIRMATTION **
+#confirm:hover {
+    background-color: var(--PastelBlue);
+}
 
 .confirmation {
     display: none;
     justify-content: center;
     align-items: center;
     margin-right: 5.25rem;
-
-    &_content {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        gap: 1.25rem;
-    }
-
-    &_image {
-        margin-bottom: 0.5rem;
-
-        img {
-            width: 100%;
-        }
-    }
-
-    &_title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--MarineBlue);
-    }
-
-    &_text {
-        color: var(--CoolGray);
-        text-align: center;
-        line-height: 160%;
-    }
 }
 
-// ** MEDIA QUERIES **
+.confirmation_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1.25rem;
+}
+
+.confirmation_image {
+    margin-bottom: 0.5rem;
+}
+
+.confirmation_image img {
+    width: 100%;
+}
+
+.confirmation_title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--MarineBlue);
+}
+
+.confirmation_text {
+    color: var(--CoolGray);
+    text-align: center;
+    line-height: 160%;
+}
 
 @media (max-width: 60.625rem) {
     .contentBox {
@@ -604,7 +571,6 @@ body {
 }
 
 @media (max-width: 50rem) {
-
     .contentBox {
         background-color: transparent;
         flex-direction: column;
@@ -616,8 +582,6 @@ body {
         box-shadow: none;
     }
 
-    // ** SIDEBAR **
-
     .sidebar {
         background: url("../../images/bg-sidebar-mobile.svg") top left no-repeat;
         background-size: cover;
@@ -627,75 +591,59 @@ body {
         max-width: 100%;
         height: 10.75rem;
         padding: 2rem;
-
-        .progress {
-            align-items: flex-start;
-
-            &_info {
-                display: none;
-            }
-        }
     }
 
-    // ** FORM ** 
+    .progress_info {
+        display: none;
+    }
+
     #multistepForm {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
         padding: 0;
-
-        .stepBox {
-            align-items: center;
-        }
-
-        .step {
-            background-color: var(--White);
-            max-width: 21.4375rem;
-            margin: 4.625rem 1rem 0;
-            padding: 2rem 1.5rem 2rem;
-            border-radius: 0.625rem;
-            box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
-
-            h1,
-            .stepTitle {
-                font-size: 1.5rem;
-            }
-
-            .step_text {
-                margin: 0.5rem 0 1.5rem;
-                line-height: 150%;
-            }
-        }
     }
 
-    // ** STEP 1 ** 
+    .stepBox {
+        align-items: center;
+    }
+
+    .step {
+        max-width: 21.4375rem;
+        margin: 4.625rem 1rem 0;
+        padding: 2rem 1.5rem;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
+    }
+
+    h1,
+    .stepTitle {
+        font-size: 1.5rem;
+    }
+
+    .step_text {
+        margin: 0.5rem 0 1.5rem;
+        line-height: 150%;
+    }
 
     .fieldGroup {
         gap: 0.9375rem;
-
-        .labelLine {
-
-            label {
-                font-size: 0.75rem
-            }
-
-            .invalid {
-                font-size: 0.875rem;
-            }
-        }
-
-        .inputLine {
-            margin: 0.25rem 0 0;
-
-            input {
-                font-size: 0.9375rem;
-                padding: 0.6875rem 1rem;
-            }
-        }
     }
 
-    // ** STEP 2 ** 
+    .labelLine label,
+    .labelLine .invalid {
+        font-size: 0.75rem;
+    }
+
+    .inputLine {
+        margin: 0.25rem 0 0;
+    }
+
+    .inputLine input {
+        font-size: 0.9375rem;
+        padding: 0.6875rem 1rem;
+    }
 
     #monthlyOption,
     #yearlyOption {
@@ -704,86 +652,74 @@ body {
 
     .planSelection {
         gap: 0.75rem;
+    }
 
-        label {
+    .card_container {
+        padding: 1rem 0.875rem;
+    }
 
-            .card_container {
-                padding: 1rem 0.875rem;
-            }
+    .card_content {
+        flex-direction: row;
+        gap: 0.875rem;
+    }
 
-            .card_content {
-                flex-direction: row;
-                gap: 0.875rem;
+    .card_content .image {
+        margin-bottom: 0;
+    }
 
-                .image {
-                    margin-bottom: 0;
-                }
-
-                .card_price {
-                    margin-top: 0.375rem;
-                }
-            }
-        }
+    .card_price {
+        margin-top: 0.375rem;
     }
 
     .checkDuration {
         margin-top: 1.5rem;
     }
 
-    // ** STEP 3 **
-
     .addOns {
         gap: 0.75rem;
-
-        .addonBox {
-
-            &_wrapper {
-                gap: 1rem;
-                padding: 0.75rem;
-            }
-
-            &_service {
-                font-size: 0.875rem;
-            }
-
-            &_price {
-                font-size: 0.75rem;
-            }
-        }
     }
 
-    // ** STEP 4 ** 
+    .addonBox_wrapper {
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+    .addonBox_service {
+        font-size: 0.875rem;
+    }
+
+    .addonBox_price {
+        font-size: 0.75rem;
+    }
+
     .summary {
         padding: 1.25rem 0.9375rem;
-
-        .selection {
-            padding-bottom: 0.75rem;
-
-            &_name {
-                font-size: 0.875rem;
-            }
-
-            &_change {
-                margin-top: 0.125rem;
-            }
-        }
     }
 
-    .optionBox {
-        option {
-            margin-top: 1rem;
-        }
+    .selection {
+        padding-bottom: 0.75rem;
+    }
+
+    .selection_name {
+        font-size: 0.875rem;
+    }
+
+    .selection_change {
+        margin-top: 0.125rem;
+    }
+
+    .option {
+        margin-top: 1rem;
     }
 
     .totalPrice {
         padding: 1.25rem 1rem 0.125rem;
-
-        &_price {
-            font-size: 1rem;
-        }
     }
 
-    // ** BUTTON ** 
+    .totalPrice_price {
+        font-size: 1rem;
+    }
+
     .buttonGroup {
         background-color: var(--White);
         padding: 1rem;
@@ -802,22 +738,20 @@ body {
         font-size: 0.875rem;
     }
 
-    // ** CONFIRMATION ** 
     .confirmation {
-        background-color: var(--White);
         max-width: 21.4375rem;
         height: 20.5rem;
         margin: 4.625rem 1rem 0;
-        padding: 2rem 1.5rem 2rem;
+        padding: 2rem 1.5rem;
         border-radius: 0.625rem;
         box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
+    }
 
-        &_content {
-            max-width: 3.5rem;
-        }
+    .confirmation_content {
+        max-width: 3.5rem;
+    }
 
-        &_title {
-            font-size: 1.5rem;
-        }
+    .confirmation_title {
+        font-size: 1.5rem;
     }
 }

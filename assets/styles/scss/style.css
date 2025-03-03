@@ -11,7 +11,9 @@
   --White: hsl(0, 0%, 100%);
 }
 
-* *::before *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,6 +40,8 @@ body {
 
 .contentBox {
   background-color: var(--White);
+  border-radius: 1rem;
+  box-shadow: 0 10px 50px 6px rgba(0, 0, 0, 0.13);
   display: flex;
   gap: 6.25rem;
   width: 100%;
@@ -45,8 +49,6 @@ body {
   height: 35.5rem;
   margin: 1rem;
   padding: 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 50px 6px rgba(0, 0, 0, 0.13);
 }
 
 .sidebar {
@@ -56,13 +58,15 @@ body {
   padding: 2.375rem 2rem;
   background-repeat: no-repeat;
 }
-.sidebar .progress {
+
+.progress {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.56rem;
 }
-.sidebar .progress_range {
+
+.progress_range {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,19 +77,23 @@ body {
   border-radius: 50%;
   color: var(--LightBlue);
 }
-.sidebar .progress_info {
+
+.progress_info {
   text-transform: uppercase;
 }
-.sidebar .progress_step {
+
+.progress_step {
   font-size: 0.825rem;
   color: var(--PastelBlue);
 }
-.sidebar .progress_name {
+
+.progress_name {
   font-weight: 700;
   margin-top: 0.25rem;
   color: var(--White);
 }
-.sidebar .progress.active .progress_range {
+
+.progress.active .progress_range {
   background-color: var(--LightBlue);
   color: var(--MarineBlue);
 }
@@ -93,26 +101,30 @@ body {
 #multistepForm {
   flex: 1;
   display: flex;
-  padding: 2.5rem 5.25rem 1rem;
+  padding: 2.5rem 5.25rem 1rem 0;
 }
-#multistepForm h1,
-#multistepForm .stepTitle {
+
+h1,
+.stepTitle {
   font-size: 2rem;
   font-weight: 700;
   color: var(--MarineBlue);
 }
-#multistepForm .stepBox {
+
+.stepBox {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-#multistepForm .step {
+
+.step {
   display: none;
   flex-direction: column;
   justify-content: center;
 }
-#multistepForm_text {
+
+.step_text {
   margin: 0.75rem 0 2.5rem;
   color: var(--CoolGray);
 }
@@ -122,45 +134,56 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
-.fieldGroup .labelLine {
+
+.labelLine {
   display: flex;
   justify-content: space-between;
 }
-.fieldGroup .labelLine label {
+
+.labelLine label,
+.labelLine .invalid {
   font-size: 0.875rem;
 }
-.fieldGroup .labelLine .invalid {
+
+.labelLine .invalid {
   display: none;
-  font-size: 0.875rem;
   font-weight: 700;
   color: var(--StrawberryRed);
 }
-.fieldGroup .labelLine .invalid.show {
+
+.labelLine .invalid.show {
   display: inline;
 }
-.fieldGroup .inputLine {
+
+.inputLine {
   margin: 0.5rem 0 0;
 }
-.fieldGroup .inputLine input {
-  background-color: var(--LightGray);
+
+.inputLine input {
+  background-color: var(--White);
   font-weight: 500;
   width: 100%;
-  padding: 0.875rem 0.875rem;
-  border: 1px solid var(--PastelBlue);
+  padding: 0.875rem;
+  border: 1px solid var(--LightGray);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: 0.3s ease;
 }
-.fieldGroup .inputLine input::-moz-placeholder {
+
+.inputLine input::-moz-placeholder {
   color: var(--CoolGray);
 }
-.fieldGroup .inputLine input::placeholder {
+
+.inputLine input::placeholder {
   color: var(--CoolGray);
 }
-.fieldGroup .inputLine input:hover, .fieldGroup .inputLine input:focus {
+
+.inputLine input:hover,
+.inputLine input:focus {
   border-color: var(--PastelBlue);
 }
-.fieldGroup .inputLine input.invalid {
+
+.inputLine input.invalid {
   border-color: var(--StrawberryRed);
 }
 
@@ -172,50 +195,59 @@ body {
 .planSelection {
   gap: 1.25rem;
 }
+
 .planSelection label {
   flex: 1;
   position: relative;
   cursor: pointer;
 }
-.planSelection label .card_container {
+
+.card_container {
   display: block;
   border: 1px solid var(--CoolGray);
   padding: 1.25rem 0.875rem 1rem;
   border-radius: 0.5rem;
   transition: 0.3s ease;
 }
-.planSelection label .card_container:hover {
+
+.card_container:hover {
   border-color: var(--MarineBlue);
 }
-.planSelection label input {
+
+.planSelection input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
-.planSelection label input:checked + .card_container {
+
+.planSelection input:checked + .card_container {
   background-color: var(--Alabaster);
   border-color: var(--MarineBlue);
 }
-.planSelection label .card_content {
+
+.card_content {
   display: flex;
   flex-direction: column;
 }
-.planSelection label .card_content .image {
+
+.card_content .image {
   margin-bottom: 2.5rem;
 }
-.planSelection label .card_content .card_title {
+
+.card_title {
   font-size: 1rem;
   font-weight: 700;
   color: var(--MarineBlue);
 }
-.planSelection label .card_content .card_price {
+
+.card_price,
+.monthFree {
   font-size: 0.75rem;
-  margin-top: 0.3125rem;
   color: var(--CoolGray);
 }
-.planSelection label .card_content .monthFree {
-  font-size: 0.3125rem;
+
+.monthFree {
   margin: 0.5rem 0 0.25rem;
   color: var(--MarineBlue);
 }
@@ -243,12 +275,14 @@ body {
   width: 2.5rem;
   height: 1.25rem;
 }
+
 .durationSlider input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-.durationSlider .slider {
+
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -259,7 +293,8 @@ body {
   border-radius: 0.625rem;
   transition: 0.3s ease;
 }
-.durationSlider .slider::before {
+
+.slider::before {
   position: absolute;
   content: "";
   width: 0.75rem;
@@ -270,7 +305,8 @@ body {
   border-radius: 50%;
   transition: 0.3s ease;
 }
-.durationSlider input:checked + .slider:before {
+
+.durationSlider input:checked + .slider::before {
   transform: translateX(1.25rem);
 }
 
@@ -279,7 +315,8 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
-.addOns .addonBox_wrapper {
+
+.addonBox_wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -290,25 +327,31 @@ body {
   transition: border 0.3s ease;
   cursor: pointer;
 }
-.addOns .addonBox_wrapper::hover {
+
+.addonBox_wrapper:hover {
   border-color: var(--PurplishBlue);
 }
-.addOns .addonBox_text {
+
+.addonBox_text {
   flex: 1;
 }
-.addOns .addonBox_service {
+
+.addonBox_service {
   font-weight: 500;
   color: var(--MarineBlue);
 }
-.addOns .addonBox_p {
+
+.addonBox_p {
   font-size: 0.875rem;
   margin-top: 0.375rem;
   color: var(--CoolGray);
 }
-.addOns .addonBox_price {
-  font-size: 0.875rrem;
+
+.addonBox_price {
+  font-size: 0.875rem;
   color: var(--PurplishBlue);
 }
+
 .addOns input {
   position: absolute;
   width: 0;
@@ -316,7 +359,8 @@ body {
   opacity: 0;
   cursor: pointer;
 }
-.addOns .checkmark {
+
+.checkmark {
   position: relative;
   width: 1.25rem;
   height: 1.25rem;
@@ -324,25 +368,31 @@ body {
   border-radius: 0.25rem;
   transition: border 0.3s ease;
 }
+
 .addOns:hover input ~ .checkmark {
   border: 1px solid var(--LightGray);
 }
+
 .addOns input:checked ~ .addonBox_wrapper .checkmark {
   background-color: var(--PurplishBlue);
   border: var(--PurplishBlue);
 }
+
 .addOns input:checked ~ .addonBox_wrapper {
   border-color: var(--PurplishBlue);
 }
-.addOns .checkmark::after {
+
+.checkmark::after {
   content: "";
   position: absolute;
   display: none;
 }
+
 .addOns input:checked ~ .addonBox_wrapper .checkmark::after {
   display: block;
 }
-.addOns .checkmark::after {
+
+.checkmark::after {
   left: 0.375rem;
   top: 0.125rem;
   width: 0.5rem;
@@ -357,17 +407,20 @@ body {
   padding: 1.375rem 1.5rem 1.5rem;
   border-radius: 0.635rem;
 }
-.summary .selection {
+
+.selection {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1.5rem;
 }
-.summary .selection_name {
+
+.selection_name {
   font-weight: 700;
   color: var(--MarineBlue);
 }
-.summary .selection_change {
+
+.selection_change {
   font-size: 0.875rem;
   margin-top: 0.3125rem;
   text-decoration: underline;
@@ -375,25 +428,32 @@ body {
   cursor: pointer;
   transition: color 0.3s ease;
 }
-.summary .selection_change:hover {
+
+.selection_change:hover {
   color: var(--PurplishBlue);
 }
-.summary .selection_price {
+
+.selection_price {
   font-weight: 700;
 }
-.summary .optionBox {
+
+.optionBox {
   border-top: 1px solid var(--CoolGray);
 }
-.summary .optionBox .option {
+
+.option {
   display: none;
   justify-content: space-between;
   align-items: center;
   margin-top: 1.25rem;
 }
-.summary .optionBox .option_name, .summary .optionBox .option_price {
+
+.option_name,
+.option_price {
   font-size: 0.875rem;
 }
-.summary .optionBox .option_name {
+
+.option_name {
   color: var(--CoolGray);
 }
 
@@ -403,10 +463,12 @@ body {
   align-items: center;
   padding: 1.5rem;
 }
+
 .totalPrice_name {
   font-size: 0.875rem;
   color: var(--CoolGray);
 }
+
 .totalPrice_price {
   font-size: 1.25rem;
   font-weight: 700;
@@ -420,8 +482,8 @@ body {
   align-items: center;
 }
 
-#next {
-  background-color: var(--MarineBlue);
+#next,
+#confirm {
   font-size: 1rem;
   width: 7.75rem;
   padding: 0.9375rem 0;
@@ -432,8 +494,13 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
 }
+
+#next {
+  background-color: var(--MarineBlue);
+}
+
 #next:hover {
-  opacity: 0.8s;
+  opacity: 0.8;
 }
 
 #prev {
@@ -444,22 +511,15 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
 }
+
 #prev:hover {
   color: var(--MarineBlue);
 }
 
 #confirm {
   background-color: var(--PurplishBlue);
-  font-size: 1rem;
-  width: 7.75rem;
-  padding: 0.9375rem 0;
-  border: 0;
-  border-radius: 0.375rem;
-  color: var(--White);
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s ease;
 }
+
 #confirm:hover {
   background-color: var(--PastelBlue);
 }
@@ -470,25 +530,30 @@ body {
   align-items: center;
   margin-right: 5.25rem;
 }
+
 .confirmation_content {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   gap: 1.25rem;
 }
+
 .confirmation_image {
   margin-bottom: 0.5rem;
 }
+
 .confirmation_image img {
   width: 100%;
 }
+
 .confirmation_title {
   font-size: 2rem;
   font-weight: 700;
   color: var(--MarineBlue);
 }
+
 .confirmation_text {
   color: var(--CoolGray);
   text-align: center;
@@ -527,10 +592,7 @@ body {
     height: 10.75rem;
     padding: 2rem;
   }
-  .sidebar .progress {
-    align-items: flex-start;
-  }
-  .sidebar .progress_info {
+  .progress_info {
     display: none;
   }
   #multistepForm {
@@ -540,38 +602,35 @@ body {
     width: 100%;
     padding: 0;
   }
-  #multistepForm .stepBox {
+  .stepBox {
     align-items: center;
   }
-  #multistepForm .step {
-    background-color: var(--White);
+  .step {
     max-width: 21.4375rem;
     margin: 4.625rem 1rem 0;
-    padding: 2rem 1.5rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 0.625rem;
     box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
   }
-  #multistepForm .step h1,
-  #multistepForm .step .stepTitle {
+  h1,
+  .stepTitle {
     font-size: 1.5rem;
   }
-  #multistepForm .step .step_text {
+  .step_text {
     margin: 0.5rem 0 1.5rem;
     line-height: 150%;
   }
   .fieldGroup {
     gap: 0.9375rem;
   }
-  .fieldGroup .labelLine label {
+  .labelLine label,
+  .labelLine .invalid {
     font-size: 0.75rem;
   }
-  .fieldGroup .labelLine .invalid {
-    font-size: 0.875rem;
-  }
-  .fieldGroup .inputLine {
+  .inputLine {
     margin: 0.25rem 0 0;
   }
-  .fieldGroup .inputLine input {
+  .inputLine input {
     font-size: 0.9375rem;
     padding: 0.6875rem 1rem;
   }
@@ -582,17 +641,17 @@ body {
   .planSelection {
     gap: 0.75rem;
   }
-  .planSelection label .card_container {
+  .card_container {
     padding: 1rem 0.875rem;
   }
-  .planSelection label .card_content {
+  .card_content {
     flex-direction: row;
     gap: 0.875rem;
   }
-  .planSelection label .card_content .image {
+  .card_content .image {
     margin-bottom: 0;
   }
-  .planSelection label .card_content .card_price {
+  .card_price {
     margin-top: 0.375rem;
   }
   .checkDuration {
@@ -601,29 +660,29 @@ body {
   .addOns {
     gap: 0.75rem;
   }
-  .addOns .addonBox_wrapper {
+  .addonBox_wrapper {
     gap: 1rem;
     padding: 0.75rem;
   }
-  .addOns .addonBox_service {
+  .addonBox_service {
     font-size: 0.875rem;
   }
-  .addOns .addonBox_price {
+  .addonBox_price {
     font-size: 0.75rem;
   }
   .summary {
     padding: 1.25rem 0.9375rem;
   }
-  .summary .selection {
+  .selection {
     padding-bottom: 0.75rem;
   }
-  .summary .selection_name {
+  .selection_name {
     font-size: 0.875rem;
   }
-  .summary .selection_change {
+  .selection_change {
     margin-top: 0.125rem;
   }
-  .optionBox option {
+  .option {
     margin-top: 1rem;
   }
   .totalPrice {
@@ -648,11 +707,10 @@ body {
     font-size: 0.875rem;
   }
   .confirmation {
-    background-color: var(--White);
     max-width: 21.4375rem;
     height: 20.5rem;
     margin: 4.625rem 1rem 0;
-    padding: 2rem 1.5rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 0.625rem;
     box-shadow: 0 0.625rem 3.125rem 0.375rem hsla(229, 24%, 87%, 0.4);
   }
