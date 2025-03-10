@@ -11,6 +11,7 @@
     --White: hsl(0, 0%, 100%);
 
 }
+
 *,
 *::before,
 *::after {
@@ -217,7 +218,7 @@ h1,
     height: 0;
 }
 
-.planSelection input:checked + .card_container {
+.planSelection input:checked+.card_container {
     background-color: var(--Alabaster);
     border-color: var(--MarineBlue);
 }
@@ -302,7 +303,7 @@ h1,
     transition: 0.3s ease;
 }
 
-.durationSlider input:checked + .slider::before {
+.durationSlider input:checked+.slider::before {
     transform: translateX(1.25rem);
 }
 
@@ -365,16 +366,16 @@ h1,
     transition: border 0.3s ease;
 }
 
-.addOns:hover input ~ .checkmark {
+.addOns:hover input~.checkmark {
     border: 1px solid var(--LightGray);
 }
 
-.addOns input:checked ~ .addonBox_wrapper .checkmark {
+.addOns input:checked~.addonBox_wrapper .checkmark {
     background-color: var(--PurplishBlue);
     border: var(--PurplishBlue);
 }
 
-.addOns input:checked ~ .addonBox_wrapper {
+.addOns input:checked~.addonBox_wrapper {
     border-color: var(--PurplishBlue);
 }
 
@@ -384,7 +385,7 @@ h1,
     display: none;
 }
 
-.addOns input:checked ~ .addonBox_wrapper .checkmark::after {
+.addOns input:checked~.addonBox_wrapper .checkmark::after {
     display: block;
 }
 
